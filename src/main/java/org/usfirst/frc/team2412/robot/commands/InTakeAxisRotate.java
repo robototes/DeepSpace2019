@@ -1,7 +1,10 @@
 package org.usfirst.frc.team2412.robot.commands;
 
-public class InTakeDown extends CommandBase {
-	public InTakeDown() {
+import org.usfirst.frc.team2412.robot.OI;
+import org.usfirst.frc.team2412.robot.Robot;
+
+public class InTakeAxisRotate extends CommandBase {
+	public InTakeAxisRotate() {
 		requires(inTakeUpDown);
 	}
 	
@@ -11,7 +14,7 @@ public class InTakeDown extends CommandBase {
 	//By using a hardware counter, a switch that might close then open very quickly can still be caught by the program.
 
 	public void execute() {
-		inTakeUpDown.InTakeDown();
+		inTakeUpDown.InTakeAxisRotate(Robot.m_oi.coDriver, OI.MANUAL_AXIS);
 	}
 
 	@Override

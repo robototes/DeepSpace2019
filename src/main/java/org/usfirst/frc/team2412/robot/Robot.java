@@ -42,7 +42,7 @@ public class Robot extends TimedRobot {
 			UsbCamera camera = new UsbCamera("Microsoft Lifecam", "/dev/video0");
 			CameraServer.getInstance().addCamera(camera);
 			camera.setResolution(160, 120);
-			camera.setFPS(60);
+			camera.setFPS(30);
 			CvSink cvSink = CameraServer.getInstance().getVideo();
 			CvSource outputStream = CameraServer.getInstance().putVideo("UsbCamera", 160, 120);
 
@@ -78,15 +78,9 @@ public class Robot extends TimedRobot {
 	LiftTopReset liftTopReset = new LiftTopReset();
 	boolean liftTopResetHeld = false;
 
-	int counter = 0;
-
-	@Override
-	public void teleopPeriodic() {
+	// Called periodically in sandstorm or teleop.
+	public void controlledPeriodic() {
 		Scheduler.getInstance().run();
-
-		if (counter++ % 50 == 0) {
-			System.out.println("Hello, world!");
-		}
 
 		// if (RobotMap.liftBottomSwitch.get() && !liftBottomResetHeld) {
 		// 	liftBottomReset.execute();
@@ -129,6 +123,26 @@ public class Robot extends TimedRobot {
 		
 		SmartDashboard.putNumberArray("Amps", power);
 		SmartDashboard.putNumberArray("IDs", ids);
+	}
+	
+	@Override
+	public void teleopInit() {
+		RobotMap.CLIMB_MODE = false;
+	}
+
+	@Override
+	public void teleopPeriodic() {
+		controlledPeriodic();
+	}
+
+	@Override
+	public void autonomousInit() {
+		RobotMap.CLIMB_MODE = false;
+	}
+
+	@Override
+	public void autonomousPeriodic() {
+		controlledPeriodic();
 	}
 
 }
