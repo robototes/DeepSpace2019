@@ -10,21 +10,19 @@ public class ClimbRollerSubsystem extends Subsystem {
 
 	private VictorSP victorSP3 = RobotMap.victorSP3;
 
+	public double rollerSpeed = 1;
+	
 	@Override
 	protected void initDefaultCommand() {
 
 	}
 
 	public void ClimbRollerForward() {
-		double rollerSpeed = 0.75;
-		// climbRoller1.set(0.75);
 		victorSP3.set(rollerSpeed);
 	}
 
 	public void ClimbRollerReverese() {
-		double rollerSpeed = -0.75;
-		// climbRoller1.set(rollerSpeed);
-		victorSP3.set(rollerSpeed);
+		victorSP3.set(-rollerSpeed);
 	}
 
 	public void ClimbRollerStop() {

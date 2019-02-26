@@ -17,29 +17,28 @@ public class ClimbLiftSubsystem extends Subsystem {
 	private VictorSP victorSP1 = RobotMap.victorSP1;
 	private VictorSP victorSP2 = RobotMap.victorSP2;
 
+	public double liftSpeed = 1;
+	
 	protected void initDefaultCommand() {
 		setDefaultCommand(new ClimbLiftJoystick());
 	}
 
 	public void ClimbLiftForward() {
-		System.out.println("foward" + System.currentTimeMillis() % 1000);
-		double LiftSpeed = 0.5;
-		victorSP1.set(LiftSpeed);
-		victorSP2.set(LiftSpeed);
+		System.out.println("foward");
+		victorSP1.set(liftSpeed);
+		victorSP2.set(liftSpeed);
 	}
 
 	public void ClimbLiftReverse() {
 		System.out.println("reverse");
-		double LiftSpeed = -0.5;
-		victorSP1.set(LiftSpeed);
-		victorSP2.set(LiftSpeed);
+		victorSP1.set(-liftSpeed);
+		victorSP2.set(-liftSpeed);
 	}
 
 	public void ClimbLiftStop() {
 		System.out.println("Released");
-		double LiftSpeed = 0.0;
-		victorSP1.set(LiftSpeed);
-		victorSP2.set(LiftSpeed);
+		victorSP1.set(0);
+		victorSP2.set(0);
 	}
 
 	public void ClimbLiftJoystick(Joystick stick, int axis) {
