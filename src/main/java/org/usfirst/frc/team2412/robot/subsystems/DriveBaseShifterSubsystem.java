@@ -1,7 +1,7 @@
 package org.usfirst.frc.team2412.robot.subsystems;
 
 import org.usfirst.frc.team2412.robot.RobotMap;
-import org.usfirst.frc.team2412.robot.commands.ShiftDefaultGearCommand;
+import org.usfirst.frc.team2412.robot.commands.drive.ShiftDefaultGearCommand;
 
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.command.Subsystem;

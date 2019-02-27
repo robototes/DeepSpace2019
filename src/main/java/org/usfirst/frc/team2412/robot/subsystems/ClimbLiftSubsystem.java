@@ -1,8 +1,8 @@
 package org.usfirst.frc.team2412.robot.subsystems;
 
-import org.usfirst.frc.team2412.robot.MaxBotixSonar;
 import org.usfirst.frc.team2412.robot.RobotMap;
-import org.usfirst.frc.team2412.robot.commands.ClimbLiftJoystick;
+import org.usfirst.frc.team2412.robot.commands.climb.ClimbLiftJoystick;
+import org.usfirst.frc.team2412.robot.sensors.MaxBotixSonar;
 
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Joystick;

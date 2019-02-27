@@ -1,5 +1,7 @@
 package org.usfirst.frc.team2412.robot;
 
+import org.usfirst.frc.team2412.robot.sensors.MaxBotixSonar;
+
 import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;

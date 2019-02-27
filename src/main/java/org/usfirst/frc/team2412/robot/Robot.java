@@ -4,8 +4,8 @@ import org.opencv.core.Core;
 import org.opencv.core.Mat;
 import org.opencv.imgproc.Imgproc;
 import org.usfirst.frc.team2412.robot.commands.CommandBase;
-import org.usfirst.frc.team2412.robot.commands.LiftBottomReset;
-import org.usfirst.frc.team2412.robot.commands.LiftTopReset;
+import org.usfirst.frc.team2412.robot.commands.lift.LiftBottomReset;
+import org.usfirst.frc.team2412.robot.commands.lift.LiftTopReset;
 
 import edu.wpi.cscore.CvSink;
 import edu.wpi.cscore.CvSource;

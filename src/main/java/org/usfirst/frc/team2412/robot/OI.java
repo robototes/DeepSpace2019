@@ -7,7 +7,21 @@
 
 package org.usfirst.frc.team2412.robot;
 
-import org.usfirst.frc.team2412.robot.commands.*;
+import org.usfirst.frc.team2412.robot.commands.climb.ClimbLiftJoystick;
+import org.usfirst.frc.team2412.robot.commands.climb.ClimbRollerAxis;
+import org.usfirst.frc.team2412.robot.commands.climb.DeployRailsSequence;
+import org.usfirst.frc.team2412.robot.commands.drive.ShiftOtherGearCommand;
+import org.usfirst.frc.team2412.robot.commands.intake.GoToIntakeAngle;
+import org.usfirst.frc.team2412.robot.commands.intake.IntakeAxisRotate;
+import org.usfirst.frc.team2412.robot.commands.intake.IntakeCargo;
+import org.usfirst.frc.team2412.robot.commands.intake.IntakeInOutAxis;
+import org.usfirst.frc.team2412.robot.commands.intake.IntakeStop;
+import org.usfirst.frc.team2412.robot.commands.intake.OutputCargo;
+import org.usfirst.frc.team2412.robot.commands.intake.PistonsIn;
+import org.usfirst.frc.team2412.robot.commands.intake.PistonsOut;
+import org.usfirst.frc.team2412.robot.commands.lift.GoToLevel;
+import org.usfirst.frc.team2412.robot.commands.lift.LiftAxisCommand;
+import org.usfirst.frc.team2412.robot.commands.vision.VisionGuidanceCommand2;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
@@ -178,10 +192,10 @@ public class OI {
 		buttonIntakeSpareAngle.whenPressed(new GoToIntakeAngle(intakeSpareAngle));
 		
 		// Intake cargo commands
-		buttonIn.whileHeld(new InTakeCargo());
-		buttonIn.whenReleased(new InTakeStop());
+		buttonIn.whileHeld(new IntakeCargo());
+		buttonIn.whenReleased(new IntakeStop());
 		buttonOut.whileHeld(new OutputCargo());
-		buttonOut.whenReleased(new InTakeStop());
+		buttonOut.whenReleased(new IntakeStop());
 		
 		// Intake hatch commands
 		buttonOutIntake.whileHeld(new PistonsOut());
@@ -201,9 +215,9 @@ public class OI {
 
 		// Buttons for the manual lift
 		buttonManualLift.whileHeld(new LiftAxisCommand()); 
-		buttonManualIntakeRotate.whileHeld(new InTakeAxisRotate());
-		buttonManualIntakeInOut.whileHeld(new InTakeInOutAxis());
-		buttonManualIntakeInOut.whenReleased(new InTakeStop());
+		buttonManualIntakeRotate.whileHeld(new IntakeAxisRotate());
+		buttonManualIntakeInOut.whileHeld(new IntakeInOutAxis());
+		buttonManualIntakeInOut.whenReleased(new IntakeStop());
 		buttonManualClimbLift.whileHeld(new ClimbLiftJoystick());
 		buttonManualClimbRoller.whileHeld(new ClimbRollerAxis());
 	}

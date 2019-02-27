@@ -118,12 +118,28 @@ public class LiftSubsystem extends Subsystem {
 			PIDController.setReference(mappedVal, ControlType.kPosition);
 		} else {
 			if (axisVal > (min + max + deadzone / 2) || axisVal < (min + max - deadzone / 2)) {
-				liftMotorLeader.set(map(axisVal,min,max,-0.5,0.5));
+				liftMotorLeader.set(map(axisVal, min, max, -0.5, 0.5));
 			}
 		}
 	}
 
 	public double map(double value, double min, double max, double newMin, double newMax) {
 		return ((value - min) / (max - min)) * (topLimit - newMin) + newMin;
+	}
+
+	public enum LiftHeights {
+		HATCH(19,28), CARGO(27.5,28);
+
+		public final double inch;
+		public final double increment;
+		
+		private LiftHeights(double inch, double increment) {
+			this.inch = inch;
+			this.increment = increment;
+		}
+
+		public double getInch(int level) {
+			return inch + increment*(level-1);
+		}
 	}
 }
