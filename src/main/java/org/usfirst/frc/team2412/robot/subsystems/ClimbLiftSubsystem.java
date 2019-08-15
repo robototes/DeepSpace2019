@@ -1,6 +1,7 @@
 package org.usfirst.frc.team2412.robot.subsystems;
 
 import org.usfirst.frc.team2412.robot.RobotMap;
+import org.usfirst.frc.team2412.robot.commands.ClimbLiftPulse;
 
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Joystick;
@@ -16,7 +17,7 @@ public class ClimbLiftSubsystem extends Subsystem {
 	private VictorSP victorSP2 = RobotMap.victorSP2;
 
 	protected void initDefaultCommand() {
-		// setDefaultCommand(new ClimbLiftJoystick());
+		setDefaultCommand(new ClimbLiftPulse());
 	}
 
 	public void ClimbLiftForward() {
@@ -29,6 +30,13 @@ public class ClimbLiftSubsystem extends Subsystem {
 	public void ClimbLiftReverse() {
 		System.out.println("reverse");
 		double LiftSpeed = -0.5;
+		victorSP1.set(LiftSpeed);
+		victorSP2.set(LiftSpeed);
+	}
+
+	public void ClimbLiftPulse() {
+		System.out.println("pulse");
+		double LiftSpeed = -0.1;
 		victorSP1.set(LiftSpeed);
 		victorSP2.set(LiftSpeed);
 	}
