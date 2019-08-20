@@ -22,6 +22,20 @@ public class DriveBaseSubsystem extends Subsystem {
 
 	public void drive(Joystick stick) {
 		// robotDrive.arcadeDrive(stick.getY(), Math.pow(-stick.getTwist() * 0.8, 3), true);
-		robotDrive.arcadeDrive(((RobotMap.SAFE_MODE)?Math.min(Math.max(stick.getY(),-0.5), 0.5):0.7*stick.getY()),-1* ((RobotMap.SAFE_MODE)?Math.min(Math.max(((stick.getRawButton(6))?stick.getX():stick.getTwist()),-0.50), 0.5):stick.getTwist()*0.5), true);
+		double velocity, turning;
+		if(RobotMap.SAFE_MODE) {
+			velocity = Math.min(Math.max(stick.getY(), -0.5), 0.5);
+			if(stick.getRawButton(6)) {
+				turning = stick.getX();
+			} else {
+				turning = stick.getTwist();
+			}
+			turning = Math.min(Math.max(turning, -0.50), 0.5);
+		} else {
+			velocity = 0.7 * stick.getY();
+			turning = 0.5 * stick.getTwist();
+		}
+
+		robotDrive.arcadeDrive(velocity, -turning, true);
 	}
 }
