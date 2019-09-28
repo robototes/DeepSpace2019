@@ -34,6 +34,12 @@ public class Robot extends TimedRobot {
 	 * This function is run when the robot is first started up and should be used
 	 * for any initialization code.
 	 */
+	public boolean compCamera = false;
+	public int compWidthRes = 160;
+	public int compHeightRes = 120;
+	public int normalWidthRes = 1920/4;
+	public int normalHeightRes = 1080/4;
+	
 	@Override
 	public void robotInit() {
 		m_oi = new OI();
@@ -43,10 +49,14 @@ public class Robot extends TimedRobot {
 			System.out.println("In thread");
 			UsbCamera camera = new UsbCamera("Microsoft Lifecam", "/dev/video0");
 			CameraServer.getInstance().addCamera(camera);
-			camera.setResolution(160, 120);
+			camera.setResolution(normalWidthRes, normalHeightRes);
+			if(compCamera)
+				camera.setResolution(compWidthRes, compHeightRes);
 			camera.setFPS(30);
 			CvSink cvSink = CameraServer.getInstance().getVideo();
-			CvSource outputStream = CameraServer.getInstance().putVideo("UsbCamera", 160, 120);
+			CvSource outputStream = CameraServer.getInstance().putVideo("UsbCamera", normalWidthRes, normalHeightRes);
+			if(compCamera)
+				outputStream = CameraServer.getInstance().putVideo("UsbCamera", compWidthRes, compHeightRes);
 
 			Mat mat = new Mat();
 
@@ -56,7 +66,8 @@ public class Robot extends TimedRobot {
 					continue;
 				}
 				// Core.flip(mat,mat,Core.ROTATE_180);
-				Imgproc.cvtColor(mat, mat, Imgproc.COLOR_RGB2GRAY);
+				if(compCamera)
+					Imgproc.cvtColor(mat, mat, Imgproc.COLOR_RGB2GRAY);
 				outputStream.putFrame(mat);
 			}
 		});

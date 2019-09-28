@@ -24,16 +24,17 @@ public class DriveBaseSubsystem extends Subsystem {
 		// robotDrive.arcadeDrive(stick.getY(), Math.pow(-stick.getTwist() * 0.8, 3), true);
 		double velocity, turning;
 		if(RobotMap.SAFE_MODE) {
-			velocity = Math.min(Math.max(stick.getY(), -0.5), 0.5);
+			velocity = Math.min(Math.max(stick.getY(), -0.35), 0.35);
 			if(stick.getRawButton(6)) {
 				turning = stick.getX();
 			} else {
 				turning = stick.getTwist();
 			}
-			turning = Math.min(Math.max(turning, -0.50), 0.5);
+			turning = Math.min(Math.max(turning, -0.35), 0.35);
 		} else {
 			velocity = 0.7 * stick.getY();
-			turning = 0.5 * stick.getTwist();
+			turning = 0.7
+			 * stick.getTwist();
 		}
 
 		robotDrive.arcadeDrive(velocity, -turning, true);
