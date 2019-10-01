@@ -2,10 +2,7 @@ package org.usfirst.frc.team2412.robot.subsystems;
 
 import org.usfirst.frc.team2412.robot.RobotMap;
 
-import com.revrobotics.CANEncoder;
-import com.revrobotics.CANPIDController;
-import com.revrobotics.CANSparkMax;
-import com.revrobotics.ControlType;
+import com.revrobotics.*;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
 
