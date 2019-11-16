@@ -19,7 +19,7 @@ public class DriveBaseSubsystem extends Subsystem {
 		setDefaultCommand(new JoystickDriveCommand());
 	}
 
-	public void drive(double y, double turn) {
+	public void drive(double y, double turn, boolean safe) {
 		if(!init){
 			for(CANSparkMax motor: RobotMap.driveBaseMotors){
 				motor.setSmartCurrentLimit(40);
@@ -28,7 +28,7 @@ public class DriveBaseSubsystem extends Subsystem {
 		}
 
 
-		robotDrive.arcadeDrive(y, turn, true);
+		robotDrive.arcadeDrive(y*((safe)?1:0.35), turn*((safe)?1:0.35));
 	}
 
 	public void drive(Joystick stick) {

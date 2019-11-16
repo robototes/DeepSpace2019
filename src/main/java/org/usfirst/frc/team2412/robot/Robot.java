@@ -97,7 +97,13 @@ public class Robot extends TimedRobot {
 	public void controlledPeriodic() {
 		Scheduler.getInstance().run();
 
-		RobotMap.SAFE_MODE = !m_oi.stick.getRawButton(4);
+		boolean buttonValue = !((RobotMap.XBOX)?m_oi.XboxController.getRawButton(8):m_oi.stick.getRawButton(4));
+		//false if button is pressed
+
+		RobotMap.SAFE_MODE = (RobotMap.INIT_SAFE_MODE)?buttonValue:!buttonValue;
+
+		//init inverts the value
+		
 
 
 		if(((System.currentTimeMillis()-startTime)/2000)%60==0){
@@ -152,7 +158,8 @@ public class Robot extends TimedRobot {
 		
 		SmartDashboard.putNumberArray("Amps", power);
 		SmartDashboard.putNumberArray("IDs", ids);
-		System.out.println("Motor Speed: "+ RobotMap.liftMotors[0].getEncoder().getVelocity());
+		// System.out.println("Motor Speed: "+ RobotMap.liftMotors[0].getEncoder().getVelocity());
+		System.out.println(RobotMap.SAFE_MODE);
 	}
 	
 	@Override

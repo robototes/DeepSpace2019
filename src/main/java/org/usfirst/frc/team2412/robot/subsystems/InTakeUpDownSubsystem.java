@@ -51,7 +51,7 @@ public class InTakeUpDownSubsystem extends PIDSubsystem {
 	}
 
 	public void InTakeDown() {
-		armMotor1.set(0.5);
+		armMotor1.set(-0.5);
 	}
 
 	public void InTakeStop() {

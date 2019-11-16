@@ -10,8 +10,10 @@ package org.usfirst.frc.team2412.robot;
 import org.usfirst.frc.team2412.robot.commands.*;
 
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import edu.wpi.first.wpilibj.buttons.POVButton;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -78,10 +80,13 @@ public class OI {
 	public static int stickPort = 0;
 	public static int coDriverArduinoButtonsPort = 1;
 	public static int coDriverArduinoDialsPort = 2;
+	public static int xboxControllerPort = 3;
 
 	public Joystick stick = new Joystick(stickPort);
 	public Joystick coDriverArduinoButtons = new Joystick(coDriverArduinoButtonsPort);
 	public Joystick coDriverArduinoDials = new Joystick(coDriverArduinoDialsPort);
+	public XboxController XboxController = new XboxController(xboxControllerPort);
+
 
 	// Joystick axis for the manual joystick on the codriver board (coDriverArduinoDials)
 	public static final int MANUAL_AXIS = 1;
@@ -185,6 +190,22 @@ public class OI {
 	public Button buttonManualClimbRoller = new JoystickButton(coDriverArduinoDials, manualClimbRollerNumber);
 
 
+
+	//Xbox Controls
+
+	public Button xboxIntakeDown = new POVButton(XboxController,180); // D Pad down
+	public Button xboxIntakeUp = new POVButton(XboxController, 0); // D Pad up
+
+	public Button xboxHatch1 = new JoystickButton(XboxController, 1); // A
+	public Button xboxCargo1 = new JoystickButton(XboxController, 2); // B
+	public Button xboxCargo2 = new JoystickButton(XboxController, 3); // X
+	public Button xboxCargo3 = new JoystickButton(XboxController, 4); // Y
+	
+	public Button xboxIntakeIn = new JoystickButton(XboxController, 6); // R Bumper
+	public Button xboxIntakeOut = new JoystickButton(XboxController, 5); // L Bumper
+
+
+
 	public OI() {
 		// Driver joystick (stick) commands
 		visionGuidance.whileHeld(new VisionGuidanceCommand2());
@@ -224,13 +245,32 @@ public class OI {
 		buttonIntakeDownAngle.whenPressed(new GoToIntakeAngle(intakeDownAngle));
 		
 		// Buttons for the manual lift
-		buttonManualLift.whileHeld(new LiftAxisCommand()); 
+		// buttonManualLift.whileHeld(new LiftAxisCommand()); 
 		buttonManualIntakeRotate.whileHeld(new InTakeAxisRotate());
 		buttonManualIntakeInOut.whileHeld(new InTakeInOutAxis());
 		buttonManualIntakeInOut.whenReleased(new InTakeStop());
 		// buttonManualClimbLift.whileHeld(new ClimbLiftJoystick());
 		// buttonManualClimbRoller.whileHeld(new ClimbRollerAxis());
 
+
+		//Xbox Commands
+		xboxIntakeDown.whenPressed(new InTakeDown()); // D Pad down
+		xboxIntakeUp.whenPressed(new InTakeUp()); // D Pad up
+
+		xboxIntakeDown.whenReleased(new InTakeUpDownStop()); // D Pad down
+		xboxIntakeUp.whenReleased(new InTakeUpDownStop()); // D Pad up
+
+
+	 xboxHatch1.whenPressed(new GoToLevel(1,true)); // A
+	 xboxCargo1.whenPressed(new GoToLevel(1,false)); // B
+	 xboxCargo2.whenPressed(new GoToLevel(2,false)); // X
+	 xboxCargo3.whenPressed(new GoToLevel(3,false)); // Y
+
+	 xboxIntakeIn.whenPressed(new InTakeCargo()); // R Bumper
+	 xboxIntakeOut.whenPressed(new OutputCargo()); // L Bumper
+
+	 xboxIntakeIn.whenReleased(new InTakeStop());
+	 xboxIntakeOut.whenReleased(new InTakeStop());
 	}
 
 }

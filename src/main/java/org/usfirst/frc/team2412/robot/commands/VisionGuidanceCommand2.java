@@ -131,7 +131,7 @@ public class VisionGuidanceCommand2 extends CommandBase {
 
 		// Drive at a speed proportional to the lidar's distance while turning at an angle proportional to the angle to the target.
 		if(targetsFound) {
-			driveBase.drive(-Kp_driving*distance, -Kp_turning*angle);
+			// driveBase.drive(-Kp_driving*distance, -Kp_turning*angle);
 		} else {
 			System.err.println("No targets found!");
 		}

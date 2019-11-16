@@ -28,11 +28,13 @@ public class RobotMap {
 	// public static int rangefinderPort = 1;
 	// public static int rangefinderModule = 1;
 
-	public static boolean DEBUG_MODE = true;
+	public static boolean DEBUG_MODE = false;
 	public static boolean CLIMB_MODE = false; // If the codriver has pressed the rail deploy button or not
 	public static boolean SAFE_MODE = true;
 
 	public static boolean INIT_SAFE_MODE = SAFE_MODE;
+
+	public static boolean XBOX = true;
 	
 	public static PowerDistributionPanel powerPanel = new PowerDistributionPanel(11);
 
