@@ -2,6 +2,7 @@ package org.usfirst.frc.team2412.robot;
 
 import org.opencv.core.Mat;
 import org.opencv.imgproc.Imgproc;
+import org.usfirst.frc.team2412.robot.commands.ClimbLiftForward;
 import org.usfirst.frc.team2412.robot.commands.CommandBase;
 import org.usfirst.frc.team2412.robot.commands.HoldCargo;
 import org.usfirst.frc.team2412.robot.commands.LiftBottomReset;
@@ -84,6 +85,7 @@ public class Robot extends TimedRobot {
 		} catch (NACKException e) {
 			e.printStackTrace();
 		}*/
+		startTime = System.currentTimeMillis();
 	}
 
 	LiftBottomReset liftBottomReset = new LiftBottomReset();
@@ -96,6 +98,17 @@ public class Robot extends TimedRobot {
 		Scheduler.getInstance().run();
 
 		RobotMap.SAFE_MODE = !m_oi.stick.getRawButton(4);
+
+
+		if(((System.currentTimeMillis()-startTime)/2000)%60==0){
+			double LiftSpeed = -0.2;
+			RobotMap.victorSP1.set(LiftSpeed);
+			RobotMap.victorSP2.set(LiftSpeed);
+		}else{
+			double LiftSpeed = 0.0;
+			RobotMap.victorSP1.set(LiftSpeed);
+			RobotMap.victorSP2.set(LiftSpeed);
+		}
 
 		// if (RobotMap.liftBottomSwitch.get() && !liftBottomResetHeld) {
 		// 	liftBottomReset.execute();

@@ -18,4 +18,8 @@ public class ClimbLiftForward extends CommandBase {
 	protected void end() {
 		climbLift.ClimbLiftStop();
 	}
+
+	public void myEnd(){
+		end();
+	}
 }

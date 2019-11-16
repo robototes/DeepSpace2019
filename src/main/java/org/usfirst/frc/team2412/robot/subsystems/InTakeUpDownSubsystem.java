@@ -13,14 +13,14 @@ public class InTakeUpDownSubsystem extends PIDSubsystem {
 	// PID conversion and unit values
 	private double potentiometerAngleRange = 350; // This is the range of angles that the potentiometer can produce,
 													// regardless of the actual angles intake will be at.
-	private double potentiometerAngleOffset = 0; // The angle offset to add to the potentiometer's angle value.
+	private double potentiometerAngleOffset = 45; // The angle offset to add to the potentiometer's angle value.
 
-	public static final double MIN_SPEED = -0.7; // Min motor speed - used to restrict how fast the motor turns.
-	public static final double MAX_SPEED = 0.7; // Max motor speed - used for default KP calculations.
+	public static final double MIN_SPEED = -1; // Min motor speed - used to restrict how fast the motor turns.
+	public static final double MAX_SPEED = 1; // Max motor speed - used for default KP calculations.
 	public static final double MAX_ERROR = 350; // Max angle error in degrees - used for default KP calculations.
 
 	// Default PID values
-	private static final double DEFAULT_KP = MAX_SPEED / MAX_ERROR;
+	private static final double DEFAULT_KP = 10 * MAX_SPEED / MAX_ERROR;
 	private static final double DEFAULT_KI = 0.0;
 	private static final double DEFAULT_KD = 0.0;
 	
@@ -64,7 +64,7 @@ public class InTakeUpDownSubsystem extends PIDSubsystem {
 
 	public void InTakeAxisRotate(Joystick stick, int axis) {
 		armMotor1.set(
-			stick.getRawAxis(axis));
+			-stick.getRawAxis(axis));
 	}
 
 	public boolean limitSwitchUp() {
@@ -84,6 +84,6 @@ public class InTakeUpDownSubsystem extends PIDSubsystem {
 
 	@Override
 	public void usePIDOutput(double speed) {
-		armMotor1.set(-speed);
+		//armMotor1.set(5*-speed);
 	}
 }

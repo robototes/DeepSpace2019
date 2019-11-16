@@ -125,9 +125,9 @@ public class OI {
 	public int buttonIntakeDownAngleNumber = 2;
 	
 	// Intake preset angle values - stowed is zero, increases going counterclockwise
-	public static int intakeStowedAngle = 57;
-	public static int intakeScoreAngle = 57;
-	public static int intakeCargoAngle = 138;
+	public static int intakeStowedAngle = 118;
+	public static int intakeScoreAngle = 118;
+	public static int intakeCargoAngle = 143;
 	public static int intakeFloorAngle = 164;
 	public static int intakeDownAngle = 172;
 
@@ -204,8 +204,8 @@ public class OI {
 		buttonOutIntake.whenReleased(new PistonsIn());
 		
 		// Climb command (for rail deployment)
-		buttonDeploy.whenPressed(new DeployRailsSequence());
-		buttonDeploy.whenReleased(new RetractRails());
+		// buttonDeploy.whenPressed(new DeployRailsSequence());
+		// buttonDeploy.whenReleased(new RetractRails());
 		// Lift commands
 		level1ButtonHatch.whenPressed(new GoToLevel(1, true));
 		level2ButtonHatch.whenPressed(new GoToLevel(2, true));
@@ -216,20 +216,20 @@ public class OI {
 		level3ButtonCargo.whenPressed(new GoToLevel(3, false));
 
 		// Intake commands for the preset angles
-		// buttonIntakeStowedAngle.whenPressed(new GoToIntakeAngle(intakeStowedAngle));
-		// buttonIntakeStowedAngle.whenPressed(new InTakeStow());
-		// buttonIntakeScoreAngle.whenPressed(new GoToIntakeAngle(intakeScoreAngle));
-		// buttonIntakeCargoAngle.whenPressed(new GoToIntakeAngle(intakeCargoAngle));
-		// buttonIntakeFloorAngle.whenPressed(new GoToIntakeAngle(intakeFloorAngle));
-		// buttonIntakeDownAngle.whenPressed(new GoToIntakeAngle(intakeDownAngle));
+		buttonIntakeStowedAngle.whenPressed(new GoToIntakeAngle(intakeStowedAngle));
+		buttonIntakeStowedAngle.whenPressed(new InTakeStow());
+		buttonIntakeScoreAngle.whenPressed(new GoToIntakeAngle(intakeScoreAngle));
+		buttonIntakeCargoAngle.whenPressed(new GoToIntakeAngle(intakeCargoAngle));
+		buttonIntakeFloorAngle.whenPressed(new GoToIntakeAngle(intakeFloorAngle));
+		buttonIntakeDownAngle.whenPressed(new GoToIntakeAngle(intakeDownAngle));
 		
 		// Buttons for the manual lift
 		buttonManualLift.whileHeld(new LiftAxisCommand()); 
 		buttonManualIntakeRotate.whileHeld(new InTakeAxisRotate());
 		buttonManualIntakeInOut.whileHeld(new InTakeInOutAxis());
 		buttonManualIntakeInOut.whenReleased(new InTakeStop());
-		buttonManualClimbLift.whileHeld(new ClimbLiftJoystick());
-		buttonManualClimbRoller.whileHeld(new ClimbRollerAxis());
+		// buttonManualClimbLift.whileHeld(new ClimbLiftJoystick());
+		// buttonManualClimbRoller.whileHeld(new ClimbRollerAxis());
 
 	}
 
