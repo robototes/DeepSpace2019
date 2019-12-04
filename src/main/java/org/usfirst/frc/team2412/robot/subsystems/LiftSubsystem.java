@@ -1,6 +1,9 @@
 package org.usfirst.frc.team2412.robot.subsystems;
 
 import com.revrobotics.ControlType;
+import com.revrobotics.CANSparkMax;
+import com.revrobotics.CANPIDController;
+import com.revrobotics.CANEncoder;
 
 import org.usfirst.frc.team2412.robot.RobotMap;
 
@@ -27,9 +30,9 @@ public class LiftSubsystem extends Subsystem {
 
 	double motorRotationsToInches = outputGearCircumference * pullyRatio / gearboxRatio;
 
-	// CANSparkMax liftMotorLeader = RobotMap.liftMotors[0]; // Motors from RobotMap
-	// CANPIDController PIDController = liftMotorLeader.getPIDController();
-	// CANEncoder motorEncoder = liftMotorLeader.getEncoder();
+	CANSparkMax liftMotorLeader = RobotMap.liftMotors[0]; // Motors from RobotMap
+	CANPIDController PIDController = liftMotorLeader.getPIDController();
+	CANEncoder motorEncoder = liftMotorLeader.getEncoder();
 
 	double P = 0.01; //.11
 	double P_safe = 0.03;

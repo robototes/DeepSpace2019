@@ -1,7 +1,11 @@
 package org.usfirst.frc.team2412.robot.subsystems;
 
+import org.usfirst.frc.team2412.robot.RobotMap;
+
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.command.PIDSubsystem;
+
+import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 
 public class InTakeUpDownSubsystem extends PIDSubsystem {
 
@@ -25,7 +29,7 @@ public class InTakeUpDownSubsystem extends PIDSubsystem {
 	
 	// private DigitalInput limitSwitchUp = RobotMap.limitSwitchUp;
 	// private DigitalInput limitSwitchDown = RobotMap.limitSwitchDown;
-	// private WPI_VictorSPX armMotor1 = RobotMap.armMotor1;
+	private WPI_VictorSPX armMotor1 = RobotMap.armMotor1;
 	
 	public InTakeUpDownSubsystem() {
 		this(DEFAULT_KP, DEFAULT_KI, DEFAULT_KD);
