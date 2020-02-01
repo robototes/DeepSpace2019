@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>DeepSpace2019</name>
-	<comment></comment>
+	<name>DeepSpace2019-Imported</name>
+	<comment>Project DeepSpace2019-Imported created by Buildship.</comment>
 	<projects>
 	</projects>
 	<buildSpec>
@@ -20,11 +20,4 @@
 		<nature>org.eclipse.jdt.core.javanature</nature>
 		<nature>org.eclipse.buildship.core.gradleprojectnature</nature>
 	</natures>
-	<linkedResources>
-		<link>
-			<name>.lib</name>
-			<type>2</type>
-			<location>C:/Users/s-oronae/git/DeepSpace2019/.libs</location>
-		</link>
-	</linkedResources>
 </projectDescription>
