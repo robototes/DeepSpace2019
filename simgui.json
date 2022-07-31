@@ -1,0 +1,42 @@
+{
+  "NTProvider": {
+    "types": {
+      "/FMSInfo": "FMSInfo",
+      "/LiveWindow/ClimbLiftSubsystem": "Subsystem",
+      "/LiveWindow/ClimbPneumaticsSubsystem": "Subsystem",
+      "/LiveWindow/ClimbRollerSubsystem": "Subsystem",
+      "/LiveWindow/DriveBaseShifterSubsystem": "Subsystem",
+      "/LiveWindow/DriveBaseSubsystem": "Subsystem",
+      "/LiveWindow/HatchIntake": "Subsystem",
+      "/LiveWindow/HatchSensors": "Subsystem",
+      "/LiveWindow/InTakeCargoSubsystem": "Subsystem",
+      "/LiveWindow/InTakeUpDownSubsystem": "Subsystem",
+      "/LiveWindow/InTakeUpDownSubsystem/PID Controller": "PIDController",
+      "/LiveWindow/LiftSubsystem": "Subsystem",
+      "/LiveWindow/Ungrouped/DifferentialDrive[1]": "DifferentialDrive",
+      "/LiveWindow/Ungrouped/DigitalInput[0]": "Digital Input",
+      "/LiveWindow/Ungrouped/DigitalInput[1]": "Digital Input",
+      "/LiveWindow/Ungrouped/DigitalInput[2]": "Digital Input",
+      "/LiveWindow/Ungrouped/DigitalInput[4]": "Digital Input",
+      "/LiveWindow/Ungrouped/DigitalInput[6]": "Digital Input",
+      "/LiveWindow/Ungrouped/DigitalInput[7]": "Digital Input",
+      "/LiveWindow/Ungrouped/DigitalOutput[5]": "Digital Output",
+      "/LiveWindow/Ungrouped/Scheduler": "Scheduler",
+      "/LiveWindow/Ungrouped/Talon SRX [1]": "Motor Controller",
+      "/LiveWindow/Ungrouped/Talon SRX [7]": "Motor Controller",
+      "/LiveWindow/Ungrouped/Talon SRX [8]": "Motor Controller",
+      "/LiveWindow/Ungrouped/Victor SPX [10]": "Motor Controller",
+      "/LiveWindow/Ungrouped/Victor SPX [9]": "Motor Controller",
+      "/LiveWindow/Ungrouped/VictorSP[0]": "Motor Controller",
+      "/LiveWindow/Ungrouped/VictorSP[1]": "Motor Controller",
+      "/LiveWindow/Ungrouped/VictorSP[2]": "Motor Controller"
+    },
+    "windows": {
+      "/LiveWindow/DriveBaseSubsystem": {
+        "window": {
+          "visible": true
+        }
+      }
+    }
+  }
+}
